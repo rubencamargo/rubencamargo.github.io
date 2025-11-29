@@ -467,5 +467,47 @@
       }
     }
     </script>
+
+    // Agregar después de Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Función para registrar visita
+            function registrarVisita() {
+                const visita = {
+                    fecha: new Date().toISOString(),
+                    url: window.location.href,
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer,
+                    screen: {
+                        width: screen.width,
+                        height: screen.height
+                    },
+                    language: navigator.language,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                };
+
+                // Obtener visitas existentes
+                let visitas = JSON.parse(localStorage.getItem('visitasLog') || '[]');
+
+                // Agregar nueva visita
+                visitas.push(visita);
+
+                // Mantener solo las últimas 100 visitas
+                if (visitas.length > 100) {
+                    visitas = visitas.slice(-100);
+                }
+
+                // Guardar en localStorage
+                localStorage.setItem('visitasLog', JSON.stringify(visitas));
+
+                // Opcional: Mostrar en consola
+                console.log('Visita registrada:', visita);
+            }
+
+            // Registrar visita cuando la página carga
+            registrarVisita();
+        });
+    </script>
 </body>
 </html>
