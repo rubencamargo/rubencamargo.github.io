@@ -568,11 +568,11 @@
                                     <span class="badge bg-secondary mb-2 align-self-start">Genbeta</span>
                                     <h5 class="card-title">${title}</h5>
                                     <p class="card-text flex-grow-1">${limpiarDescripcion(description)}</p>
-                                    <div class="mt-auto">
-                                        <small class="text-muted">${formatearFecha(pubDate)}</small>
-                                        <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm ms-2" 
+                                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">${formatearFechaCompleta(pubDate)}</small>
+                                        <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm" 
                                            onclick="gtag('event', 'news_click', {event_category: 'engagement', event_label: '${title.substring(0, 30).replace(/'/g, "\\'")}'})">
-                                            Leer más
+                                            Leer
                                         </a>
                                     </div>
                                 </div>
@@ -645,10 +645,10 @@
                                 <span class="badge bg-secondary mb-2 align-self-start">Genbeta</span>
                                 <h5 class="card-title">${noticia.title}</h5>
                                 <p class="card-text flex-grow-1">${noticia.description}</p>
-                                <div class="mt-auto">
-                                    <small class="text-muted">${formatearFecha(noticia.date)}</small>
-                                    <a href="${noticia.link}" target="_blank" class="btn btn-primary btn-sm ms-2">
-                                        Leer más
+                                <div class="mt-auto d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">${formatearFechaCompleta(noticia.date)}</small>
+                                    <a href="${noticia.link}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                        Leer
                                     </a>
                                 </div>
                             </div>
@@ -685,19 +685,30 @@
                 }
             }
 
-            function formatearFecha(fecha) {
+            function formatearFechaCompleta(fecha) {
                 try {
                     const ahora = new Date();
                     const diffMs = ahora - fecha;
-                    const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                    const diffHoras = Math.floor(diffMs / (1000 * 60 * 60));
 
-                    if (diffDias === 0) return 'Hoy';
-                    if (diffDias === 1) return 'Ayer';
-                    if (diffDias < 7) return `Hace ${diffDias} días`;
+                    // Si es de hoy, mostrar solo la hora
+                    if (diffHoras < 24) {
+                        return fecha.toLocaleTimeString('es-AR', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    }
 
-                    return fecha.toLocaleDateString('es-AR');
+                    // Si es de ayer o más, mostrar fecha completa
+                    return fecha.toLocaleDateString('es-AR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
                 } catch (e) {
-                    return 'Fecha reciente';
+                    return 'Fecha no disponible';
                 }
             }
 
