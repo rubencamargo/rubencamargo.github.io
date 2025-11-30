@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruben Dario Camargo Bernal | Desarrollador Full Stack PHP | Buenos Aires</title>
     <meta name="description"
-        content="Desarrollador Full Stack PHP con +10 años de experiencia. Especializado en Laravel, CakePHP, JavaScript. Desarrollo web, aplicaciones móviles y gestión de proyectos.">
+        content="Desarrollador Full Stack PHP con +10 años de experiencia. Especializado en Laravel, CakePHP, JavaScript, API REST. Desarrollo web, integraciones y gestión de proyectos.">
     <meta name="keywords"
-        content="desarrollador full stack, PHP, Laravel, CakePHP, JavaScript, MySQL, Buenos Aires, desarrollador web, líder técnico, programador, desarrollador freelance">
+        content="desarrollador full stack, PHP, Laravel, CakePHP, JavaScript, MySQL, API REST, integraciones, Buenos Aires, desarrollador web, líder técnico">
     <meta name="author" content="Ruben Dario Camargo Bernal">
     <meta name="robots" content="index, follow">
 
@@ -279,41 +279,6 @@
         </div>
     </header>
 
-    <!-- Agregar esta sección después del Hero -->
-    <section id="enterprise" class="py-5 bg-white">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="section-title">🚀 Soluciones para Empresas</h2>
-                    <p class="lead">Desarrollo tecnológico que impulsa el crecimiento empresarial</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="text-center">
-                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                        <h4>Aplicaciones Empresariales</h4>
-                        <p>Sistemas personalizados que optimizan procesos internos y mejoran la productividad</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="text-center">
-                        <i class="fas fa-database fa-3x text-primary mb-3"></i>
-                        <h4>Migración y Modernización</h4>
-                        <p>Actualización de sistemas legacy a tecnologías modernas y escalables</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="text-center">
-                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                        <h4>Equipos de Desarrollo</h4>
-                        <p>Liderazgo técnico y formación de equipos para proyectos empresariales</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container">
@@ -337,11 +302,11 @@
                 <div class="col-md-4 mb-4">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                            <i class="fas fa-plug" aria-hidden="true"></i>
                         </div>
-                        <h3>Desarrollo Móvil</h3>
-                        <p>Aplicaciones móviles híbridas para iOS y Android desarrolladas con frameworks modernos como
-                            PhoneGap y tecnologías web.</p>
+                        <h3>Integraciones API REST</h3>
+                        <p>Conexión de sistemas empresariales, desarrollo de APIs personalizadas e integración con
+                            servicios externos como payment gateways, ERPs y CRMs.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -411,6 +376,7 @@
                                 <span class="badge bg-light text-dark">PHP</span>
                                 <span class="badge bg-light text-dark">CakePHP</span>
                                 <span class="badge bg-light text-dark">MySQL</span>
+                                <span class="badge bg-light text-dark">API REST</span>
                             </div>
                         </div>
                     </div>
@@ -428,6 +394,7 @@
                                 <span class="badge bg-light text-dark">Laravel</span>
                                 <span class="badge bg-light text-dark">Azure AD</span>
                                 <span class="badge bg-light text-dark">Bootstrap</span>
+                                <span class="badge bg-light text-dark">API REST</span>
                             </div>
                         </div>
                     </div>
@@ -445,6 +412,7 @@
                                 <span class="badge bg-light text-dark">WordPress</span>
                                 <span class="badge bg-light text-dark">WooCommerce</span>
                                 <span class="badge bg-light text-dark">PHP</span>
+                                <span class="badge bg-light text-dark">API REST</span>
                             </div>
                         </div>
                     </div>
@@ -608,7 +576,52 @@
             }
 
             function mostrarNoticiasEjemplo() {
-                // ... (el mismo código de ejemplo)
+                const noticiasEjemplo = [
+                    {
+                        title: "Avances en inteligencia artificial para diagnóstico médico",
+                        description: "Nuevos algoritmos de IA están revolucionando la forma en que se diagnostican enfermedades complejas.",
+                        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        date: new Date(),
+                        link: "https://es.wired.com"
+                    },
+                    {
+                        title: "El futuro de la energía renovable en América Latina",
+                        description: "Cómo los países latinoamericanos están liderando la transición hacia energías limpias.",
+                        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+                        link: "https://es.wired.com"
+                    },
+                    {
+                        title: "Innovaciones en computación cuántica",
+                        description: "Los últimos desarrollos en computación cuántica y sus aplicaciones prácticas.",
+                        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+                        link: "https://es.wired.com"
+                    }
+                ];
+
+                let noticiasHTML = '';
+                noticiasEjemplo.forEach(noticia => {
+                    noticiasHTML += `
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card news-card h-100">
+                                <img src="${noticia.image}" class="news-img" alt="${noticia.title}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">${noticia.title}</h5>
+                                    <p class="card-text flex-grow-1">${noticia.description}</p>
+                                    <div class="mt-auto">
+                                        <small class="text-muted">${formatearFecha(noticia.date)}</small>
+                                        <a href="${noticia.link}" target="_blank" class="btn btn-primary btn-sm ms-2">
+                                            Leer más
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                $('#news-container').html(noticiasHTML);
             }
 
             function limpiarDescripcion(descripcion) {
