@@ -427,7 +427,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title">📰 Noticias de Ciencia y Tecnología</h2>
-                    <p class="lead">Mantente actualizado con las últimas novedades de Wired</p>
+                    <p class="lead">Mantente actualizado con las últimas novedades</p>
                 </div>
             </div>
             <div class="row" id="news-container">
@@ -494,7 +494,7 @@
     <script>
         $(document).ready(function () {
             // RSS Feed de Wired Ciencia
-            const RSS_URL = 'https://es.wired.com/feed/ciencia/rss';
+            const RSS_URL = 'https://www.genbeta.com/tag/rss';
 
             // Usar proxy para evitar CORS
             const PROXY_URL = 'https://api.allorigins.win/raw?url=';
@@ -508,7 +508,7 @@
                         mostrarNoticias(xml);
                     },
                     error: function () {
-                        mostrarNoticiasEjemplo();
+                        //mostrarNoticiasEjemplo();
                     }
                 });
             }
@@ -575,6 +575,7 @@
                 return 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80';
             }
 
+            /*
             function mostrarNoticiasEjemplo() {
                 const noticiasEjemplo = [
                     {
@@ -623,6 +624,7 @@
 
                 $('#news-container').html(noticiasHTML);
             }
+            */
 
             function limpiarDescripcion(descripcion) {
                 const text = descripcion.replace(/<[^>]*>/g, '');
