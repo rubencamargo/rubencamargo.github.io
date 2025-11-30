@@ -427,7 +427,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title">📰 Noticias de Ciencia y Tecnología</h2>
-                    <p class="lead">Mantente actualizado con las últimas novedades</p>
+                    <p class="lead">Mantente actualizado con las últimas novedades de Genbeta</p>
                 </div>
             </div>
             <div class="row" id="news-container">
@@ -493,7 +493,7 @@
     <!-- News Script -->
     <script>
         $(document).ready(function () {
-            // RSS Feed de Wired Ciencia
+            // RSS Feed de Genbeta
             const RSS_URL = 'https://www.genbeta.com/tag/rss';
 
             // Usar proxy para evitar CORS
@@ -507,8 +507,9 @@
                     success: function (xml) {
                         mostrarNoticias(xml);
                     },
-                    error: function () {
-                        //mostrarNoticiasEjemplo();
+                    error: function (xhr, status, error) {
+                        console.log('Error cargando RSS:', error);
+                        mostrarNoticiasEjemplo();
                     }
                 });
             }
@@ -517,6 +518,7 @@
                 const $container = $('#news-container');
                 let noticiasHTML = '';
 
+                // Genbeta usa <item> dentro de <channel>
                 $(xml).find('item').slice(0, 6).each(function () {
                     const $item = $(this);
                     const title = $item.find('title').text();
@@ -524,8 +526,8 @@
                     const link = $item.find('link').text();
                     const pubDate = new Date($item.find('pubDate').text());
 
-                    // Extraer imagen de diferentes fuentes posibles
-                    let imageUrl = obtenerImagenNoticia($item);
+                    // Extraer imagen de Genbeta
+                    let imageUrl = obtenerImagenGenbeta($item, description);
 
                     noticiasHTML += `
                     <div class="col-md-6 col-lg-4 mb-4">
@@ -548,99 +550,117 @@
                 `;
                 });
 
-                $container.html(noticiasHTML);
+                $container.html(noticiasHTML || '<div class="col-12 text-center"><p>No se pudieron cargar las noticias en este momento.</p></div>');
             }
 
-            function obtenerImagenNoticia($item) {
-                // 1. Intentar obtener de media:thumbnail
-                const mediaThumbnail = $item.find('media\\:thumbnail');
-                if (mediaThumbnail.length > 0 && mediaThumbnail.attr('url')) {
-                    return mediaThumbnail.attr('url');
+            function obtenerImagenGenbeta($item, description) {
+                // Genbeta suele incluir imágenes en el contenido CDATA del description
+                try {
+                    // Buscar imagen en el contenido HTML del description
+                    const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
+                    if (imgMatch && imgMatch[1]) {
+                        return imgMatch[1];
+                    }
+
+                    // Intentar con content:encoded si existe
+                    const contentEncoded = $item.find('content\\:encoded').text();
+                    if (contentEncoded) {
+                        const contentImgMatch = contentEncoded.match(/<img[^>]+src="([^">]+)"/);
+                        if (contentImgMatch && contentImgMatch[1]) {
+                            return contentImgMatch[1];
+                        }
+                    }
+                } catch (e) {
+                    console.log('Error extrayendo imagen:', e);
                 }
 
-                // 2. Intentar de media:content
-                const mediaContent = $item.find('media\\:content');
-                if (mediaContent.length > 0 && mediaContent.attr('url')) {
-                    return mediaContent.attr('url');
-                }
+                // Imágenes por defecto relacionadas con tecnología
+                const techImages = [
+                    'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                    'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                    'https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+                ];
 
-                // 3. Buscar en el contenido/description
-                const content = $item.find('content\\:encoded, description').text();
-                const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-                if (imgMatch) {
-                    return imgMatch[1];
-                }
-
-                // 4. Imagen por defecto
-                return 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80';
+                return techImages[Math.floor(Math.random() * techImages.length)];
             }
 
-            /*
             function mostrarNoticiasEjemplo() {
                 const noticiasEjemplo = [
                     {
-                        title: "Avances en inteligencia artificial para diagnóstico médico",
-                        description: "Nuevos algoritmos de IA están revolucionando la forma en que se diagnostican enfermedades complejas.",
-                        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        title: "Las últimas novedades en desarrollo web y tecnología",
+                        description: "Mantente actualizado con las últimas tendencias en programación, frameworks y herramientas de desarrollo.",
+                        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                         date: new Date(),
-                        link: "https://es.wired.com"
+                        link: "https://www.genbeta.com"
                     },
                     {
-                        title: "El futuro de la energía renovable en América Latina",
-                        description: "Cómo los países latinoamericanos están liderando la transición hacia energías limpias.",
-                        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        title: "PHP 8.3: Nuevas características y mejoras de rendimiento",
+                        description: "Descubre las últimas actualizaciones del lenguaje PHP y cómo aprovecharlas en tus proyectos.",
+                        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                         date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-                        link: "https://es.wired.com"
+                        link: "https://www.genbeta.com"
                     },
                     {
-                        title: "Innovaciones en computación cuántica",
-                        description: "Los últimos desarrollos en computación cuántica y sus aplicaciones prácticas.",
-                        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        title: "Laravel vs CakePHP: Comparativa para proyectos empresariales",
+                        description: "Análisis detallado de ambos frameworks PHP para ayudarte a elegir el mejor para tu próximo proyecto.",
+                        image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                         date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
-                        link: "https://es.wired.com"
+                        link: "https://www.genbeta.com"
                     }
                 ];
 
                 let noticiasHTML = '';
                 noticiasEjemplo.forEach(noticia => {
                     noticiasHTML += `
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="card news-card h-100">
-                                <img src="${noticia.image}" class="news-img" alt="${noticia.title}">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${noticia.title}</h5>
-                                    <p class="card-text flex-grow-1">${noticia.description}</p>
-                                    <div class="mt-auto">
-                                        <small class="text-muted">${formatearFecha(noticia.date)}</small>
-                                        <a href="${noticia.link}" target="_blank" class="btn btn-primary btn-sm ms-2">
-                                            Leer más
-                                        </a>
-                                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card news-card h-100">
+                            <img src="${noticia.image}" class="news-img" alt="${noticia.title}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${noticia.title}</h5>
+                                <p class="card-text flex-grow-1">${noticia.description}</p>
+                                <div class="mt-auto">
+                                    <small class="text-muted">${formatearFecha(noticia.date)}</small>
+                                    <a href="${noticia.link}" target="_blank" class="btn btn-primary btn-sm ms-2">
+                                        Leer más
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    `;
+                    </div>
+                `;
                 });
 
                 $('#news-container').html(noticiasHTML);
             }
-            */
 
             function limpiarDescripcion(descripcion) {
-                const text = descripcion.replace(/<[^>]*>/g, '');
-                return text.length > 120 ? text.substring(0, 120) + '...' : text;
+                try {
+                    // Remover HTML tags y limpiar el texto
+                    const text = descripcion.replace(/<[^>]*>/g, '')
+                        .replace(/&[^;]+;/g, '')
+                        .replace(/\s+/g, ' ')
+                        .trim();
+                    return text.length > 120 ? text.substring(0, 120) + '...' : text;
+                } catch (e) {
+                    return 'Descripción no disponible';
+                }
             }
 
             function formatearFecha(fecha) {
-                const ahora = new Date();
-                const diffMs = ahora - fecha;
-                const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                try {
+                    const ahora = new Date();
+                    const diffMs = ahora - fecha;
+                    const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-                if (diffDias === 0) return 'Hoy';
-                if (diffDias === 1) return 'Ayer';
-                if (diffDias < 7) return `Hace ${diffDias} días`;
+                    if (diffDias === 0) return 'Hoy';
+                    if (diffDias === 1) return 'Ayer';
+                    if (diffDias < 7) return `Hace ${diffDias} días`;
 
-                return fecha.toLocaleDateString('es-AR');
+                    return fecha.toLocaleDateString('es-AR');
+                } catch (e) {
+                    return 'Fecha reciente';
+                }
             }
 
             // Cargar noticias al iniciar
