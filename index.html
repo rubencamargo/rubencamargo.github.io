@@ -505,7 +505,7 @@
                         mostrarNoticias(xml);
                     },
                     error: function () {
-                        //mostrarNoticiasEjemplo();
+                        mostrarNoticiasEjemplo();
                     }
                 });
             }
@@ -521,25 +521,21 @@
                     const link = $item.find('link').text();
                     const pubDate = new Date($item.find('pubDate').text());
 
-                    // Extraer imagen del contenido
-                    let imageUrl = 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80';
-                    const content = $item.find('content\\:encoded, description').text();
-                    const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-                    if (imgMatch) {
-                        imageUrl = imgMatch[1];
-                    }
+                    // Extraer imagen de diferentes fuentes posibles
+                    let imageUrl = obtenerImagenNoticia($item);
 
                     noticiasHTML += `
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card news-card h-100">
-                            <img src="${imageUrl}" class="news-img" alt="${title}">
+                            <img src="${imageUrl}" class="news-img" alt="${title}" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">${title}</h5>
                                 <p class="card-text flex-grow-1">${limpiarDescripcion(description)}</p>
                                 <div class="mt-auto">
                                     <small class="text-muted">${formatearFecha(pubDate)}</small>
-                                    <a href="${link}" target="_blank" class="btn btn-primary btn-sm ms-2" 
-                                       onclick="gtag('event', 'news_click', {event_category: 'engagement', event_label: '${title.substring(0, 30)}'})">
+                                    <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm ms-2" 
+                                       onclick="gtag('event', 'news_click', {event_category: 'engagement', event_label: '${title.substring(0, 30).replace(/'/g, "\\'")}'})">
                                         Leer más
                                     </a>
                                 </div>
@@ -552,59 +548,35 @@
                 $container.html(noticiasHTML);
             }
 
-            /*
-            function mostrarNoticiasEjemplo() {
-                const noticiasEjemplo = [
-                    {
-                        title: "Avances en inteligencia artificial para diagnóstico médico",
-                        description: "Nuevos algoritmos de IA están revolucionando la forma en que se diagnostican enfermedades complejas.",
-                        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        date: new Date(),
-                        link: "https://es.wired.com"
-                    },
-                    {
-                        title: "El futuro de la energía renovable en América Latina",
-                        description: "Cómo los países latinoamericanos están liderando la transición hacia energías limpias.",
-                        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-                        link: "https://es.wired.com"
-                    },
-                    {
-                        title: "Innovaciones en computación cuántica",
-                        description: "Los últimos desarrollos en computación cuántica y sus aplicaciones prácticas.",
-                        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
-                        link: "https://es.wired.com"
-                    }
-                ];
+            function obtenerImagenNoticia($item) {
+                // 1. Intentar obtener de media:thumbnail
+                const mediaThumbnail = $item.find('media\\:thumbnail');
+                if (mediaThumbnail.length > 0 && mediaThumbnail.attr('url')) {
+                    return mediaThumbnail.attr('url');
+                }
 
-                let noticiasHTML = '';
-                noticiasEjemplo.forEach(noticia => {
-                    noticiasHTML += `
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card news-card h-100">
-                            <img src="${noticia.image}" class="news-img" alt="${noticia.title}">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">${noticia.title}</h5>
-                                <p class="card-text flex-grow-1">${noticia.description}</p>
-                                <div class="mt-auto">
-                                    <small class="text-muted">${formatearFecha(noticia.date)}</small>
-                                    <a href="${noticia.link}" target="_blank" class="btn btn-primary btn-sm ms-2">
-                                        Leer más
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                });
+                // 2. Intentar de media:content
+                const mediaContent = $item.find('media\\:content');
+                if (mediaContent.length > 0 && mediaContent.attr('url')) {
+                    return mediaContent.attr('url');
+                }
 
-                $('#news-container').html(noticiasHTML);
+                // 3. Buscar en el contenido/description
+                const content = $item.find('content\\:encoded, description').text();
+                const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+                if (imgMatch) {
+                    return imgMatch[1];
+                }
+
+                // 4. Imagen por defecto
+                return 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80';
             }
-            */
+
+            function mostrarNoticiasEjemplo() {
+                // ... (el mismo código de ejemplo)
+            }
 
             function limpiarDescripcion(descripcion) {
-                // Limpiar HTML tags y limitar longitud
                 const text = descripcion.replace(/<[^>]*>/g, '');
                 return text.length > 120 ? text.substring(0, 120) + '...' : text;
             }
