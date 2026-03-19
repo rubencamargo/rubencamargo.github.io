@@ -4,13 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruben Dario Camargo Bernal | Desarrollador Full Stack PHP | Buenos Aires</title>
+    <title>Ruben Camargo | Programador Web | Sistemas de Gestión & Web Corporativas</title>
     <meta name="description"
-        content="Desarrollador Full Stack PHP con +10 años de experiencia. Especializado en Laravel, CakePHP, JavaScript, API REST. Desarrollo web, integraciones y gestión de proyectos.">
+        content="Ruben Camargo, programador web con trayectoria y +10 años de experiencia. Especialista en desarrollo de sistemas de gestión, páginas web corporativas, soluciones para emprendedores e integrador de sistemas.">
     <meta name="keywords"
-        content="desarrollador full stack, PHP, Laravel, CakePHP, JavaScript, MySQL, API REST, integraciones, Buenos Aires, desarrollador web, líder técnico">
+        content="programador web, desarrollador web, sistemas de gestión, páginas web corporativas, emprendedores, integrador de sistemas, PHP, Laravel, Buenos Aires, líder técnico">
     <meta name="author" content="Ruben Dario Camargo Bernal">
     <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rubencamargo.github.io/">
+    <meta property="og:title" content="Ruben Dario Camargo Bernal | Desarrollador Full Stack PHP">
+    <meta property="og:description" content="Desarrollador Full Stack PHP con +10 años de experiencia. Especializado en Laravel, CakePHP, JavaScript, API REST.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/3587433?v=4">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rubencamargo.github.io/">
+    <meta property="twitter:title" content="Ruben Dario Camargo Bernal | Desarrollador Full Stack PHP">
+    <meta property="twitter:description" content="Desarrollador Full Stack PHP con +10 años de experiencia. Especializado en Laravel, CakePHP, JavaScript, API REST.">
+    <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/3587433?v=4">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6849KX8NQ5"></script>
@@ -34,6 +48,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary: #0d6efd;
@@ -42,11 +58,16 @@
             --light: #f8f9fa;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             background-color: #f8f9fa;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Mejora de rendimiento y CLS */
@@ -73,11 +94,31 @@
         }
 
         .section-title {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            margin-bottom: 40px;
             color: var(--primary);
-            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), #fff, var(--primary));
+            background-size: 200% 100%;
+            animation: shine-border 3s infinite linear;
+        }
+
+        @keyframes shine-border {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
         }
 
         .services-section {
@@ -97,12 +138,18 @@
 
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(13, 110, 253, 0.15);
         }
 
         .service-icon {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .skills-section {
@@ -164,26 +211,152 @@
         }
 
         .cta-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 4rem 0;
+            background: linear-gradient(-45deg, #0a58ca, #0d6efd, #052c65, #001f3f);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            padding: 12px 30px;
-            font-weight: 600;
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .btn-primary:hover {
-            background-color: var(--secondary);
-            border-color: var(--secondary);
+        .cta-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        .btn-outline-light:hover {
-            color: var(--primary);
+        .cta-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Parallax Section */
+        .parallax-section {
+            background-image: linear-gradient(rgba(10, 88, 202, 0.45), rgba(33, 37, 41, 0.7)), url('assets/img/services_tech_bg.png');
+            height: 350px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 6rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+        }
+
+        .parallax-content h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .service-pill {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Floating WhatsApp Button Tech Style */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #000;
+            color: #25d366;
+            border: 2px solid #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .whatsapp-label {
+            background: #000;
+            color: #25d366;
+            padding: 8px 20px;
+            border-radius: 4px;
+            margin-right: -10px;
+            padding-right: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid #25d366;
+            box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-float:hover .whatsapp-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .whatsapp-float:hover .whatsapp-icon {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
+            color: #fff;
+            background-color: #25d366;
+        }
+
+        /* Scanline effect */
+        .whatsapp-icon::after {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(37, 211, 102, 0.8);
+            animation: tech-scan 2s infinite linear;
+            box-shadow: 0 0 10px #25d366;
+        }
+
+        @keyframes tech-scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
         }
 
         footer {
@@ -223,6 +396,139 @@
             max-width: 100%;
             height: auto;
         }
+
+        /* Responsividad adicional */
+        /* Process Section */
+        .process-section {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
+        }
+        .process-step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        .testimonial-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+        }
+        .testimonial-card i.quote-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        .testimonial-rank {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background: #052c65;
+            color: white;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .stat-item p {
+            font-size: 1rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tech Radar */
+        .radar-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        .radar-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 3rem 0;
+            }
+            .btn-lg {
+                padding: 10px 20px;
+                font-size: 1rem;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .btn-outline-light.btn-lg {
+                margin-left: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -247,7 +553,7 @@
                         <a class="nav-link" href="#projects">Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#news">Noticias</a>
+                        <a class="nav-link" href="#testimonials">Testimonios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contacto</a>
@@ -265,15 +571,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <img src="https://avatars.githubusercontent.com/u/3587433?v=4"
-                        alt="Ruben Dario Camargo Bernal - Desarrollador Full Stack"
-                        class="profile-img rounded-circle mb-4" width="180" height="180">
-                    <h1 class="display-4 fw-bold mb-3">Ruben Dario <br> Camargo Bernal</h1>
-                    <p class="lead mb-4">Desarrollador Full Stack & Líder Técnico con más de 10 años de experiencia</p>
-                    <p class="mb-5"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i>Ciudad Autónoma de
-                        Buenos Aires, Argentina</p>
-                    <a href="#contact" class="btn btn-light btn-lg me-3">Contactar</a>
-                    <a href="#projects" class="btn btn-outline-light btn-lg">Ver Proyectos</a>
+                    <h1 class="display-3 fw-bold mb-2" data-aos="fade-up">Ruben Dario <br> Camargo Bernal</h1>
+                    <p class="h4 mb-4 text-light opacity-75" data-aos="fade-up" data-aos-delay="100">Programador Web & Desarrollador de Sistemas de Gestión</p>
+                    <p class="h5 mb-5" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i>Ciudad Autónoma de Buenos Aires, Argentina
+                    </p>
+                    <div data-aos="fade-up" data-aos-delay="400">
+                        <a href="#contact" class="btn btn-light btn-lg me-3 px-5 py-3 shadow">Contactar</a>
+                        <a href="#projects" class="btn btn-outline-light btn-lg px-5 py-3">Ver Proyectos</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -283,7 +589,7 @@
     <section id="services" class="services-section">
         <div class="container">
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
                     <h2 class="section-title">Servicios Profesionales</h2>
                     <p class="lead">Soluciones tecnológicas personalizadas para impulsar tu negocio</p>
                 </div>
@@ -294,19 +600,8 @@
                         <div class="service-icon">
                             <i class="fas fa-laptop-code" aria-hidden="true"></i>
                         </div>
-                        <h3>Desarrollo Web</h3>
-                        <p>Creación de aplicaciones web modernas, responsivas y escalables utilizando tecnologías como
-                            PHP, Laravel, JavaScript y más.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-plug" aria-hidden="true"></i>
-                        </div>
-                        <h3>Integraciones API REST</h3>
-                        <p>Conexión de sistemas empresariales, desarrollo de APIs personalizadas e integración con
-                            servicios externos como payment gateways, ERPs y CRMs.</p>
+                        <h3>Programador Web</h3>
+                        <p>Diseño y desarrollo de **páginas web corporativas** y soluciones a medida para **emprendedores**, priorizando la velocidad y el SEO.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -314,9 +609,59 @@
                         <div class="service-icon">
                             <i class="fas fa-project-diagram" aria-hidden="true"></i>
                         </div>
-                        <h3>Gestión de Proyectos</h3>
-                        <p>Liderazgo técnico y coordinación de equipos de desarrollo utilizando metodologías ágiles como
-                            SCRUM.</p>
+                        <h3>Sistemas de Gestión</h3>
+                        <p>Especialista en el **desarrollo de sistemas de gestión** internos, ERPs y CRMs que optimizan los procesos de tu negocio.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plug" aria-hidden="true"></i>
+                        </div>
+                        <h3>Integrador de Sistemas</h3>
+                        <p>Conexión de ecosistemas digitales mediante **integración de sistemas**, APIs REST y automatizaciones complejas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="section-title">Metodología de Trabajo</h2>
+                    <p class="lead">Un proceso estructurado para garantizar el éxito de tu proyecto</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-step">
+                        <div class="step-num">01</div>
+                        <h3>Descubrimiento</h3>
+                        <p>Análisis profundo de requerimientos y objetivos de negocio.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-step">
+                        <div class="step-num">02</div>
+                        <h3>Arquitectura</h3>
+                        <p>Diseño de la estructura técnica escalable y robusta.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step">
+                        <div class="step-num">03</div>
+                        <h3>Desarrollo</h3>
+                        <p>Codificación limpia siguiendo las mejores prácticas y estándares.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-step">
+                        <div class="step-num">04</div>
+                        <h3>Despliegue</h3>
+                        <p>Lanzamiento optimizado y soporte post-entrega.</p>
                     </div>
                 </div>
             </div>
@@ -327,7 +672,7 @@
     <section id="skills" class="skills-section">
         <div class="container">
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
                     <h2 class="section-title">Habilidades Técnicas</h2>
                     <p class="lead">Tecnologías y herramientas que domino</p>
                 </div>
@@ -353,11 +698,25 @@
         </div>
     </section>
 
+    <!-- Parallax Quote Section -->
+    <div class="parallax-section">
+        <div class="parallax-content text-center">
+            <h2 class="mb-4" data-aos="fade-up">Transformando ideas en realidades digitales</h2>
+            <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="fade-up" data-aos-delay="200">
+                <span class="badge rounded-pill service-pill">Integraciones</span>
+                <span class="badge rounded-pill service-pill">APIs</span>
+                <span class="badge rounded-pill service-pill">Automatizaciones</span>
+                <span class="badge rounded-pill service-pill">Inteligencia Artificial</span>
+                <span class="badge rounded-pill service-pill">Sistemas de gestión</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="container">
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
                     <h2 class="section-title">Proyectos Destacados</h2>
                     <p class="lead">Algunos de mis trabajos más relevantes</p>
                 </div>
@@ -421,21 +780,93 @@
         </div>
     </section>
 
-    <!-- News Section -->
-    <section id="news" class="news-section">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
         <div class="container">
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="section-title">📰 Noticias de Ciencia y Tecnología</h2>
-                    <p class="lead">Mantente actualizado con las últimas novedades de Genbeta</p>
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="section-title">Lo que dicen mis clientes</h2>
+                    <p class="lead">Experiencias reales de colaboración profesional</p>
                 </div>
             </div>
-            <div class="row" id="news-container">
-                <div class="col-12 text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Cargando noticias...</span>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="testimonial-text">"La capacidad de Ruben para abstraer problemas complejos y convertirlos en soluciones técnicas eficientes es asombrosa. Su dominio de Laravel fue clave para nuestro proyecto."</p>
+                        <div class="testimonial-author">Leandro Cabrera - UCEMA</div>
                     </div>
-                    <p class="mt-2">Cargando las últimas noticias...</p>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="testimonial-text">"Excelente comunicación y entrega puntual. Ruben no solo programa, también propone mejoras arquitectónicas que ahorran costos a largo plazo."</p>
+                        <div class="testimonial-author">Juan Ulecia - Centralbuzios.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="zoom-in">
+                    <div class="stat-item">
+                        <h3>+10</h3>
+                        <p>Años de Experiencia</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-item">
+                        <h3>+50</h3>
+                        <p>Proyectos Entregados</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <p>Uptime & Calidad</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Compromiso Profesional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Radar / Current Focus -->
+    <section id="radar" class="radar-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="section-title">Radar Tecnológico</h2>
+                    <p class="lead">En qué estoy trabajando y aprendiendo actualmente</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="radar-card">
+                        <h4 class="mb-3"><i class="fas fa-brain me-2 text-primary"></i> IA Generativa</h4>
+                        <p class="mb-0">Integración de LLMs en flujos de trabajo PHP/Laravel para automatización inteligente.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="radar-card">
+                        <h4 class="mb-3"><i class="fas fa-chart-bar me-2 text-primary"></i> Power BI</h4>
+                        <p class="mb-0">Análisis de datos avanzado y creación de dashboards interactivos para inteligencia de negocios.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="radar-card">
+                        <h4 class="mb-3"><i class="fas fa-random me-2 text-primary"></i> n8n (Automatización)</h4>
+                        <p class="mb-0">Orquestación de flujos de trabajo automatizados y conexión de servicios sin límites.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -443,12 +874,16 @@
 
     <!-- Call to Action Section -->
     <section id="contact" class="cta-section">
+        <div class="cta-particles"></div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="mb-4">¿Listo para comenzar tu próximo proyecto?</h2>
+                    <h2 class="section-title mb-4">¿Listo para comenzar tu próximo proyecto?</h2>
                     <p class="lead mb-5">Contáctame para discutir cómo puedo ayudar a hacer realidad tus ideas</p>
-                    <a href="mailto:rubencamargo@gmail.com" class="btn btn-light btn-lg me-3">Enviar Email</a>
+                    <a href="#" class="btn btn-light btn-lg me-3 email-link">Enviar Email</a>
+                    <a href="https://wa.me/5491127037330" class="btn btn-success btn-lg me-3" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                    </a>
                     <a href="cv.html" class="btn btn-outline-light btn-lg">Ver CV Completo</a>
                 </div>
             </div>
@@ -465,7 +900,9 @@
                         eficientes.</p>
                 </div>
                 <div class="col-md-6 mb-4 text-md-end">
-                    <div class="social-links mb-3">
+                    <p class="mb-2">Ciudad Autónoma de Buenos Aires, Argentina</p>
+                    <p class="mb-0"><a href="#" class="text-white email-link" style="text-decoration: none;">Contacto vía Email</a></p>
+                    <div class="social-links mt-3">
                         <a href="https://www.linkedin.com/in/rubencamargo/" target="_blank" aria-label="LinkedIn"
                             rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
@@ -484,238 +921,50 @@
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5491127037330" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <div class="whatsapp-label">> hablemos_de_codigo( )</div>
+        <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </a>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- News Script -->
+    <!-- Inicialización de animaciones -->
     <script>
-        $(document).ready(function () {
-            // RSS Feed de Genbeta que SÍ funciona
-            const RSS_URL = 'https://www.genbeta.com/rss2.xml';
+        $(document).ready(function() {
+            // Aplicar AOS dinámicamente a las tarjetas
+            $('.service-card').parent().each(function(i) {
+                $(this).attr('data-aos', 'fade-up').attr('data-aos-delay', (i + 1) * 100);
+            });
 
-            // Proxies alternativos
-            const PROXIES = [
-                'https://corsproxy.io/?',
-                'https://api.codetabs.com/v1/proxy?quest=',
-                'https://api.allorigins.win/raw?url='
-                ];
+            $('.project-card').parent().each(function(i) {
+                $(this).attr('data-aos', 'fade-up').attr('data-aos-delay', (i + 1) * 100);
+            });
 
-            let currentProxyIndex = 0;
+            // Inicializar AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
 
-            function cargarNoticias() {
-                const proxyUrl = PROXIES[currentProxyIndex] + encodeURIComponent(RSS_URL);
-
-                $('#news-container').html(`
-                <div class="col-12 text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Cargando noticias...</span>
-                    </div>
-                    <p class="mt-2">Cargando desde Genbeta...</p>
-                </div>
-            `);
-
-                $.ajax({
-                    url: proxyUrl,
-                    method: 'GET',
-                    dataType: 'xml',
-                    timeout: 10000,
-                    success: function (xml) {
-                        console.log('✅ RSS de Genbeta cargado exitosamente');
-                        mostrarNoticias(xml);
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(`❌ Proxy ${currentProxyIndex} falló:`, error);
-
-                        // Intentar con siguiente proxy
-                        currentProxyIndex = (currentProxyIndex + 1) % PROXIES.length;
-
-                        if (currentProxyIndex === 0) {
-                            // Si todos los proxies fallaron
-                            console.log('⚠️ Todos los proxies fallaron, usando datos de ejemplo');
-                            mostrarNoticiasEjemplo();
-                        } else {
-                            // Reintentar con siguiente proxy
-                            setTimeout(cargarNoticias, 1000);
-                        }
-                    }
-                });
-            }
-
-            function mostrarNoticias(xml) {
-                const $container = $('#news-container');
-                let noticiasHTML = '';
-
-                try {
-                    $(xml).find('item').slice(0, 6).each(function () {
-                        const $item = $(this);
-                        const title = $item.find('title').text().trim();
-                        const description = $item.find('description').text();
-                        const link = $item.find('link').text();
-                        const pubDate = new Date($item.find('pubDate').text());
-
-                        // Extraer imagen del description (Genbeta incluye imágenes ahí)
-                        let imageUrl = obtenerImagenGenbeta(description);
-
-                        noticiasHTML += `
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="card news-card h-100">
-                                <img src="${imageUrl}" class="news-img" alt="${title}" 
-                                     onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${title}</h5>
-                                    <p class="card-text flex-grow-1">${limpiarDescripcion(description)}</p>
-                                    <div class="mt-auto d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">${formatearFechaCompleta(pubDate)}</small>
-                                        <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm" 
-                                           onclick="gtag('event', 'news_click', {event_category: 'engagement', event_label: '${title.substring(0, 30).replace(/'/g, "\\'")}'})">
-                                            Leer
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    });
-
-                    $container.html(noticiasHTML || '<div class="col-12 text-center"><p>No se encontraron noticias.</p></div>');
-
-                } catch (error) {
-                    console.log('Error procesando RSS:', error);
-                    mostrarNoticiasEjemplo();
-                }
-            }
-
-            function obtenerImagenGenbeta(description) {
-                try {
-                    // Genbeta incluye imágenes en el description con formato: <img src="URL">
-                    const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
-                    if (imgMatch && imgMatch[1]) {
-                        return imgMatch[1];
-                    }
-                } catch (e) {
-                    console.log('Error extrayendo imagen:', e);
-                }
-
-                // Imágenes por defecto de tecnología
-                const techImages = [
-                    'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                    'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
-                ];
-
-                return techImages[Math.floor(Math.random() * techImages.length)];
-            }
-
-            function mostrarNoticiasEjemplo() {
-                const noticiasEjemplo = [
-                    {
-                        title: "Las últimas novedades en desarrollo web y tecnología",
-                        description: "Mantente actualizado con las últimas tendencias en programación, frameworks y herramientas de desarrollo.",
-                        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        date: new Date(),
-                        link: "https://www.genbeta.com"
-                    },
-                    {
-                        title: "PHP 8.3: Nuevas características y mejoras de rendimiento",
-                        description: "Descubre las últimas actualizaciones del lenguaje PHP y cómo aprovecharlas en tus proyectos.",
-                        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-                        link: "https://www.genbeta.com"
-                    },
-                    {
-                        title: "Laravel vs CakePHP: Comparativa para proyectos empresariales",
-                        description: "Análisis detallado de ambos frameworks PHP para ayudarte a elegir el mejor para tu próximo proyecto.",
-                        image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
-                        link: "https://www.genbeta.com"
-                    }
-                ];
-
-                let noticiasHTML = '';
-                noticiasEjemplo.forEach(noticia => {
-                    noticiasHTML += `
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card news-card h-100">
-                            <img src="${noticia.image}" class="news-img" alt="${noticia.title}">
-                            <div class="card-body d-flex flex-column">
-                                <span class="badge bg-secondary mb-2 align-self-start">Genbeta</span>
-                                <h5 class="card-title">${noticia.title}</h5>
-                                <p class="card-text flex-grow-1">${noticia.description}</p>
-                                <div class="mt-auto d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">${formatearFechaCompleta(noticia.date)}</small>
-                                    <a href="${noticia.link}" target="_blank" class="btn btn-outline-primary btn-sm">
-                                        Leer
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                });
-
-                $('#news-container').html(noticiasHTML);
-
-                // Mensaje informativo
-                $('#news-container').before(`
-                <div class="row mb-3">
-                    <div class="col-12 text-center">
-                        <div class="alert alert-warning d-inline-block">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            Mostrando noticias de ejemplo - Los proxies están temporariamente no disponibles
-                        </div>
-                    </div>
-                </div>
-            `);
-            }
-
-            function limpiarDescripcion(descripcion) {
-                try {
-                    // Remover HTML tags y limpiar
-                    const text = descripcion.replace(/<[^>]*>/g, '')
-                        .replace(/&[^;]+;/g, '')
-                        .replace(/\s+/g, ' ')
-                        .trim();
-                    return text.length > 120 ? text.substring(0, 120) + '...' : text;
-                } catch (e) {
-                    return 'Descripción no disponible';
-                }
-            }
-
-            function formatearFechaCompleta(fecha) {
-                try {
-                    const ahora = new Date();
-                    const diffMs = ahora - fecha;
-                    const diffHoras = Math.floor(diffMs / (1000 * 60 * 60));
-
-                    // Si es de hoy, mostrar solo la hora
-                    if (diffHoras < 24) {
-                        return fecha.toLocaleTimeString('es-AR', {
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        });
-                    }
-
-                    // Si es de ayer o más, mostrar fecha completa
-                    return fecha.toLocaleDateString('es-AR', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-                } catch (e) {
-                    return 'Fecha no disponible';
-                }
-            }
-
-            // Cargar noticias al iniciar
-            cargarNoticias();
-
-            // Recargar cada 60 minutos
-            setInterval(cargarNoticias, 60 * 60 * 1000);
+            // Protección de Email
+            $('.email-link').on('click', function(e) {
+                e.preventDefault();
+                const user = 'rubencamargo';
+                const domain = 'gmail.com';
+                window.location.href = `mailto:${user}@${domain}`;
+            });
         });
     </script>
 
@@ -723,13 +972,25 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Ruben Dario Camargo Bernal - Desarrollador Full Stack",
+      "@type": "Person",
+      "name": "Ruben Dario Camargo Bernal",
       "url": "https://rubencamargo.github.io/",
-      "description": "Desarrollador Full Stack PHP con más de 10 años de experiencia. Especializado en Laravel, CakePHP, JavaScript y gestión de proyectos.",
-      "author": {
-        "@type": "Person",
-        "name": "Ruben Dario Camargo Bernal"
+      "image": "https://avatars.githubusercontent.com/u/3587433?v=4",
+      "sameAs": [
+        "https://www.linkedin.com/in/rubencamargo/",
+        "https://github.com/rubencamargo"
+      ],
+      "jobTitle": "Programador Web & Especialista en Sistemas de Gestión",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Universidad del CEMA"
+      },
+      "knowsAbout": ["Programación Web", "Desarrollo de Sistemas de Gestión", "Páginas Web Corporativas", "Integrador de Sistemas", "PHP", "Laravel"],
+      "description": "Programador Web con trayectoria y +10 años de experiencia. Especialista en sistemas de gestión corporativos e integrador de sistemas tecnológicos.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ciudad Autónoma de Buenos Aires",
+        "addressCountry": "Argentina"
       }
     }
     </script>
