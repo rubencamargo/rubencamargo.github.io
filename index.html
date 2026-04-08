@@ -76,6 +76,27 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 1rem 0;
         }
+        .navbar .container {
+            flex-wrap: nowrap;
+        }
+        .navbar-nav .nav-link {
+            padding: 0.5rem 1rem;
+        }
+        .navbar-collapse {
+            background: #fff;
+            text-align: center;
+        }
+        .navbar-toggler {
+            border-color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .navbar-nav .nav-link {
+                font-size: 1rem;
+            }
+        }
 
         .hero-section {
             background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(10, 88, 202, 0.9)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
