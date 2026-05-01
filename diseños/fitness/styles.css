@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;700;900&display=swap');
+
+:root {
+    --primary: #000000;
+    --secondary: #1a1a1a;
+    --accent: #bef264; /* Neon Lime */
+    --white: #ffffff;
+    --text-muted: #94a3b8;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--primary);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+/* --- Header --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(190, 242, 100, 0.1);
+    padding: 20px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* --- Hero --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1500');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 6rem;
+    line-height: 0.9;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--accent);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 40px;
+    color: var(--text-muted);
+}
+
+.btn-neon {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--accent);
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: var(--transition);
+    transform: skewX(-15deg);
+}
+
+.btn-neon span {
+    display: block;
+    transform: skewX(15deg);
+}
+
+.btn-neon:hover {
+    background: var(--white);
+    box-shadow: 0 0 30px var(--accent);
+}
+
+/* --- Grid Section --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    color: var(--accent);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--secondary);
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: var(--transition);
+}
+
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-10px);
+}
+
+.card i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+/* --- Floating WhatsApp --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.wa-button {
+    width: 65px;
+    height: 65px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 35px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+    position: relative;
+}
+
+.wa-dumbbell {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: #e2e8f0;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+/* --- Reveal --- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: 0.8s all cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateX(0);
+}

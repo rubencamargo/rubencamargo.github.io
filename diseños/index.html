@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Diseños Premium | Ruben Camargo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        
+        :root {
+            --primary: #0d6efd;
+            --secondary: #0a58ca;
+            --dark: #212529;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark);
+            margin: 0;
+            padding-top: 0; /* Removed navbar offset */
+        }
+
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(10, 88, 202, 0.9)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 10rem 2rem 12rem; /* Increased padding since there's no navbar */
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container-catalog {
+            max-width: 1200px;
+            margin: -5rem auto 5rem;
+            padding: 0 20px;
+        }
+
+        .grid-catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card-premium {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-premium:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.15);
+            border-color: var(--primary);
+        }
+
+        .card-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-premium:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card-body-premium {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tag-premium {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+        }
+
+        .card-premium h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .card-premium p {
+            font-size: 0.95rem;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .btn-view {
+            margin-top: auto;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .card-premium:hover .btn-view {
+            background: var(--primary);
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-catalog { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <h1 data-aos="fade-up">Catálogo de Soluciones</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Explora nuestra colección de landing pages diseñadas para convertir visitas en clientes reales, optimizadas para cada industria.</p>
+        </div>
+    </header>
+
+    <!-- Catalog Grid -->
+    <div class="container-catalog">
+        <div class="grid-catalog">
+            
+            <!-- Jets -->
+            <a href="jets/index.html" class="card-premium" data-aos="fade-up">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=800" alt="Private Jets">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(10, 25, 47, 0.1); color: #0a192f;">Lujo Executive</span>
+                    <h3>Aviación Privada</h3>
+                    <p>Estética de ultra-lujo con catálogo de flota y sistema de solicitud de vuelos corporativos.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Restaurante -->
+            <a href="restaurante/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" alt="Restaurante">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(212, 175, 55, 0.1); color: #d4af37;">Gourmet</span>
+                    <h3>Haute Gastronomie</h3>
+                    <p>Experiencia "Moody" con menú de autor, reserva de mesas y galería de platos premium.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Arquitectura -->
+            <a href="arquitectura/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Arquitectura">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(26, 26, 26, 0.1); color: #1a1a1a;">Estructura</span>
+                    <h3>Arquitectura & Diseño</h3>
+                    <p>Estética brutalista y minimalista. Ideal para estudios que buscan resaltar la pureza de sus obras.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Yoga -->
+            <a href="yoga/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800" alt="Yoga">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(124, 148, 115, 0.1); color: #7c9473;">Bienestar</span>
+                    <h3>Centros de Yoga & Zen</h3>
+                    <p>Diseño minimalista enfocado en la serenidad, con secciones de prácticas y meditación.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Fitness -->
+            <a href="fitness/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" alt="Fitness">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(190, 242, 100, 0.1); color: #84cc16;">Energía</span>
+                    <h3>Gimnasios & Fitness</h3>
+                    <p>Alto impacto visual en modo oscuro con tablas de precios y secciones de disciplinas.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Salud -->
+            <a href="salud/index.html" class="card-premium" data-aos="fade-up">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="Salud">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium">Salud</span>
+                    <h3>Clínicas & Consultorios</h3>
+                    <p>Diseño confiable y limpio para profesionales de la salud, turnos y especialistas.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Legal -->
+            <a href="legal/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800" alt="Legal">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(10, 88, 202, 0.1); color: #0a58ca;">Legal</span>
+                    <h3>Bufetes de Abogados</h3>
+                    <p>Estética de prestigio y autoridad para despachos legales y consultoría empresarial.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Artesanías -->
+            <a href="artesanias/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&q=80&w=800&v=art2" alt="Artesanías">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(120, 53, 15, 0.1); color: #78350f;">Artesanal</span>
+                    <h3>Emprendedores & Ferias</h3>
+                    <p>Diseño orgánico y cálido ideal para productos hechos a mano y storytelling creativo.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+            <!-- Institutos -->
+            <a href="institutos/index.html" class="card-premium" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800" alt="Institutos">
+                </div>
+                <div class="card-body-premium">
+                    <span class="tag-premium" style="background: rgba(13, 110, 253, 0.1); color: #0d6efd;">Educación</span>
+                    <h3>Institutos & Academias</h3>
+                    <p>Estructura enfocada en captación de alumnos con estadísticas y testimonios claros.</p>
+                    <div class="btn-view">Explorar Demo</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Footer (Same as Home) -->
+    <footer>
+        <div class="container text-center">
+            <h3 class="fw-bold text-white mb-4">Ruben Camargo</h3>
+            <p class="mb-4 text-light opacity-50">© 2026 Ruben Camargo - Soluciones Digitales de Alto Impacto</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="text-white opacity-75"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="#" class="text-white opacity-75"><i class="fab fa-github fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+</html>

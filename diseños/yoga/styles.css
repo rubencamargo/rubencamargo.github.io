@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #4b5d44; /* Deep Moss Green */
+    --accent: #7c9473; /* Sage Green */
+    --bg-zen: #fdfbf7; /* Soft Parchment */
+    --white: #ffffff;
+    --text-main: #2d342d;
+    --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-zen);
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 120px 0;
+}
+
+/* --- Header --- */
+header {
+    background: rgba(253, 251, 247, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 25px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(124, 148, 115, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* --- Hero --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    font-style: italic;
+    color: var(--accent);
+}
+
+.btn-zen {
+    display: inline-block;
+    padding: 18px 45px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.btn-zen:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* --- Content Cards --- */
+.zen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+}
+
+.zen-card {
+    text-align: center;
+}
+
+.zen-card img {
+    width: 100%;
+    border-radius: 50% 50% 0 0;
+    margin-bottom: 30px;
+    filter: grayscale(20%);
+    transition: var(--transition);
+}
+
+.zen-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+}
+
+.zen-card h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+/* --- Floating WhatsApp --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.wa-button {
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    position: relative;
+}
+
+.wa-loto {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    font-size: 22px;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* --- Reveal --- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1.2s all ease-out;
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}

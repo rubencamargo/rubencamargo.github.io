@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;600&display=swap');
+
+:root {
+    --primary: #121212; /* Deep Black */
+    --accent: #d4af37; /* Gourmet Gold */
+    --white: #ffffff;
+    --gray: #1a1a1a;
+    --text-muted: #888;
+    --transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 120px 0;
+}
+
+/* --- Header --- */
+header {
+    background: rgba(18, 18, 18, 0.95);
+    padding: 25px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* --- Hero --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1500');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.btn-gourmet {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.btn-gourmet:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+/* --- Menu Grid --- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.dish-card {
+    background: var(--gray);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.dish-card:hover {
+    border-color: var(--accent);
+}
+
+.dish-img {
+    height: 250px;
+    overflow: hidden;
+}
+
+.dish-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.dish-card:hover .dish-img img {
+    transform: scale(1.1);
+}
+
+.dish-info {
+    padding: 30px;
+    text-align: center;
+}
+
+.dish-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.dish-price {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* --- Floating WhatsApp --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.wa-button {
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    position: relative;
+}
+
+.wa-cloche {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 25px;
+    color: var(--accent);
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+/* --- Chefs Section --- */
+.chefs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.chef-card {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: var(--transition);
+}
+
+.chef-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-10px);
+}
+
+.chef-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    border: 2px solid var(--accent);
+    padding: 5px;
+}
+
+.chef-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.chef-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.chef-card span {
+    color: var(--accent);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Reservation Section --- */
+.reservation-section {
+    background: #000;
+}
+
+.reservation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.03);
+    padding: 60px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 2px;
+}
+
+.reservation-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.form-group input, .form-group select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 10px 0;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--accent);
+}
+
+.btn-reserve {
+    grid-column: span 2;
+    margin-top: 30px;
+    background: var(--accent);
+    color: black;
+    border: none;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-reserve:hover {
+    background: var(--white);
+    letter-spacing: 5px;
+}
+
+/* --- Reveal --- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s all ease;
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}

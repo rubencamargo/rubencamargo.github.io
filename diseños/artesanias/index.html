@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artesanías del Alma | Objetos con Historia</title>
+    <meta name="description" content="Productos hechos a mano con amor y dedicación. Cerámica, textiles y decoración casera para tu hogar.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Artesanías<span>Alma</span></a>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Vitrinas</a></li>
+                    <li><a href="#proceso">El Taller</a></li>
+                    <li><a href="#ferias">Encuentros</a></li>
+                    <li><a href="#faq">Dudas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div data-reveal>
+                <span class="handwritten">100% Hecho a Mano</span>
+                <h1>Objetos Únicos para Momentos Especiales</h1>
+                <p>Descubre nuestra colección de piezas artesanales diseñadas para traer calidez y alma a cada rincón de tu casa.</p>
+                <a href="#productos" class="btn-craft">Explorar Colección</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="productos">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;" data-reveal>
+                <h2>Nuestras Creaciones</h2>
+                <p>Piezas únicas hechas con materiales naturales y procesos artesanales.</p>
+            </div>
+            <div class="product-grid">
+                <!-- Row 1 -->
+                <div class="product-card" data-reveal>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=600" alt="Cerámica">
+                    </div>
+                    <div class="product-info">
+                        <h3>Tazas de Cerámica</h3>
+                        <p>Modeladas a mano con terminación rústica.</p>
+                        <span class="price">$1.500</span>
+                    </div>
+                </div>
+                <div class="product-card" data-reveal style="transition-delay: 0.1s;">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&q=80&w=600" alt="Textil">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cestas de Yute</h3>
+                        <p>Tejidas artesanalmente para organización natural.</p>
+                        <span class="price">$2.200</span>
+                    </div>
+                </div>
+                <div class="product-card" data-reveal style="transition-delay: 0.2s;">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?auto=format&fit=crop&q=80&w=600" alt="Decoración">
+                    </div>
+                    <div class="product-info">
+                        <h3>Velas de Soja</h3>
+                        <p>Aromas naturales en envases reutilizables.</p>
+                        <span class="price">$950</span>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="product-card" data-reveal style="transition-delay: 0.3s;">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?auto=format&fit=crop&q=80&w=600" alt="Joyería">
+                    </div>
+                    <div class="product-info">
+                        <h3>Collares de Piedra</h3>
+                        <p>Piedras naturales engarzadas en plata.</p>
+                        <span class="price">$3.500</span>
+                    </div>
+                </div>
+                <div class="product-card" data-reveal style="transition-delay: 0.4s;">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1524289286702-f07229da36f5?auto=format&fit=crop&q=80&w=600" alt="Cuero">
+                    </div>
+                    <div class="product-info">
+                        <h3>Carteras de Cuero</h3>
+                        <p>Cuero curtido vegetal cosido a mano.</p>
+                        <span class="price">$8.900</span>
+                    </div>
+                </div>
+                <div class="product-card" data-reveal style="transition-delay: 0.5s;">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80&w=600" alt="Madera">
+                    </div>
+                    <div class="product-info">
+                        <h3>Tablas de Madera</h3>
+                        <p>Madera de olivo curada con cera de abeja.</p>
+                        <span class="price">$4.200</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proceso" style="background: #fdf6e3;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+                <div data-reveal>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 25px;">El Arte de lo Lento</h2>
+                    <p style="margin-bottom: 20px;">En un mundo apurado, yo elijo el tiempo. Cada una de mis piezas pasa por un proceso de creación lento y respetuoso con la materia prima.</p>
+                    <p style="margin-bottom: 30px;">Utilizo técnicas ancestrales para asegurar que lo que llega a tus manos no sea solo un objeto, sino una historia.</p>
+                    <a href="#" class="btn-craft" style="background: var(--secondary);">Ver Mi Taller</a>
+                </div>
+                <div data-reveal style="transition-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=800&v=1" alt="Taller" style="width: 100%; border-radius: 40px 10px 40px 10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonial-card" data-reveal>
+                <i class="fas fa-quote-left"></i>
+                <p class="testimonial-text">"Compré las tazas de cerámica y son hermosas. Se nota el amor que tienen en cada detalle. Llegaron súper rápido y muy bien protegidas."</p>
+                <h4 style="font-family: 'Pacifico'; font-size: 1.5rem;">Mariana L.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ferias Section -->
+    <section id="ferias">
+        <div class="container">
+            <div class="section-title" data-reveal>
+                <h2>Próximas Ferias</h2>
+                <p>Ven a visitarme, conoce los productos en persona y charlemos un rato.</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="feria-item" data-reveal>
+                    <div class="feria-date">
+                        <span>12</span> MAY
+                    </div>
+                    <div class="feria-info">
+                        <h4>Feria de Artesanos Locales</h4>
+                        <p>Plaza Central, 10:00 a 19:00 hs.</p>
+                    </div>
+                </div>
+                <div class="feria-item" data-reveal style="transition-delay: 0.2s;">
+                    <div class="feria-date">
+                        <span>25</span> MAY
+                    </div>
+                    <div class="feria-info">
+                        <h4>Mercado de Productores Caseros</h4>
+                        <p>Centro Cultural Sur, 11:00 a 20:00 hs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title" data-reveal>
+                <h2>Preguntas Comunes</h2>
+                <p>Todo lo que necesitas saber para llevar una pieza a casa.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-card" data-reveal>
+                    <i class="fas fa-truck"></i>
+                    <h4>Envíos</h4>
+                    <p>Enviamos a todo el país mediante correo privado con embalaje reforzado.</p>
+                </div>
+                <div class="faq-card" data-reveal style="transition-delay: 0.1s;">
+                    <i class="fas fa-magic"></i>
+                    <h4>Personalizados</h4>
+                    <p>¿Tienes una idea? La creamos juntos. Escríbeme y diseñamos tu pieza.</p>
+                </div>
+                <div class="faq-card" data-reveal style="transition-delay: 0.2s;">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Pagos</h4>
+                    <p>Aceptamos transferencias, efectivo en ferias y todas las tarjetas.</p>
+                </div>
+                <div class="faq-card" data-reveal style="transition-delay: 0.3s;">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Cuidado</h4>
+                    <p>Te entregamos una guía de cuidados para que tu pieza dure toda la vida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3 style="font-family: 'Pacifico'; font-size: 2rem; margin-bottom: 20px;">Artesanías del Alma</h3>
+            <p style="color: #d97706; margin-bottom: 30px;">Hecho a mano en Argentina con amor.</p>
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
+                <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; color: #78350f;">&copy; 2024 Artesanías del Alma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <div class="whatsapp-float">
+        <div class="wa-container">
+            <a href="https://wa.me/yournumber" class="wa-button" target="_blank">
+                <span class="wa-tag">100% HandMade</span>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

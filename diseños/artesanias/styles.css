@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&family=Pacifico&display=swap');
+
+:root {
+    --primary: #451a03; /* Deep Wood Brown */
+    --accent: #c2410c; /* Terracotta */
+    --secondary: #4d7c0f; /* Sage Green */
+    --bg-warm: #fffbeb; /* Soft Cream */
+    --text-main: #451a03;
+    --text-muted: #78350f;
+    --white: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-warm);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+}
+
+.handwritten {
+    font-family: 'Pacifico', cursive;
+    color: var(--accent);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* --- Header --- */
+header {
+    background: var(--white);
+    padding: 20px 0;
+    box-shadow: 0 2px 15px rgba(69, 26, 3, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* --- Hero --- */
+.hero {
+    text-align: center;
+    padding: 100px 0;
+    background: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.btn-craft {
+    display: inline-block;
+    padding: 15px 35px;
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(194, 65, 12, 0.3);
+}
+
+.btn-craft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(194, 65, 12, 0.4);
+}
+
+/* --- Products --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-img {
+    height: 300px;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 25px;
+}
+
+.product-info h3 {
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: 800;
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
+/* --- Floating WhatsApp --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.wa-button {
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    position: relative;
+}
+
+.wa-tag {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    background: #fff;
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transform: rotate(15deg);
+    border: 1px dashed var(--accent);
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 60px 0 20px;
+    text-align: center;
+}
+
+/* --- Ferias Section --- */
+.feria-item {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px dashed var(--accent);
+    transition: var(--transition);
+}
+
+.feria-item:hover {
+    background: var(--bg-warm);
+    transform: scale(1.02);
+}
+
+.feria-date {
+    background: var(--accent);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 25px;
+}
+
+.feria-date span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.feria-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* --- Testimonials --- */
+.testimonials {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.testimonial-card {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testimonial-card i {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.testimonial-text {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 25px;
+    font-family: 'Lora', serif;
+}
+
+/* --- FAQ Section --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 80px; /* Increased to separate from the grid cards */
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.faq-card {
+    background: var(--white);
+    padding: 45px 35px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #fcecc0;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(120, 53, 15, 0.1);
+    border-color: var(--accent);
+}
+
+.faq-card i {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 30px; /* Increased margin below icon */
+    background: var(--bg-warm);
+    width: 70px; /* Slightly larger icon container */
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.faq-card h4 {
+    font-family: 'Lora', serif;
+    margin-bottom: 20px; /* Increased margin below title */
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+
+.faq-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8; /* More air between lines */
+}
+
+/* --- Reveal --- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s all ease;
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}

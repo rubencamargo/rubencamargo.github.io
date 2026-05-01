@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANTOSHA | Yoga & Mindfulness Studio</title>
+    <meta name="description" content="Espacio de bienestar dedicado a la práctica de Yoga y Meditación en un entorno de paz absoluta.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">SANTOSHA</a>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#practicas">Prácticas</a></li>
+                    <li><a href="#estudio">Estudio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content" data-reveal>
+            <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; color: var(--accent);">Respira. Suelta. Sé.</span>
+            <h1>Encuentra tu Centro en la Quietud</h1>
+            <p>Un refugio para el alma donde el cuerpo encuentra su equilibrio y la mente su paz.</p>
+            <a href="#practicas" class="btn-zen">Comenzar el Viaje</a>
+        </div>
+    </section>
+
+    <!-- Practices -->
+    <section id="practicas">
+        <div class="container">
+            <div class="zen-grid">
+                <div class="zen-card" data-reveal>
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600" alt="Hatha Yoga">
+                    <h3>Hatha Yoga</h3>
+                    <p>Posturas suaves y respiración consciente para fortalecer el cuerpo físico y calmar el sistema nervioso.</p>
+                </div>
+                <div class="zen-card" data-reveal style="transition-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=600" alt="Meditación">
+                    <h3>Meditación</h3>
+                    <p>Técnicas de mindfulness para cultivar la presencia plena y reducir el ruido mental del día a día.</p>
+                </div>
+                <div class="zen-card" data-reveal style="transition-delay: 0.6s;">
+                    <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=600" alt="Vinyasa">
+                    <h3>Vinyasa Flow</h3>
+                    <p>Movimiento fluido y dinámico en sincronía con la respiración para revitalizar tu energía vital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Section -->
+    <section id="estudio" style="background-color: var(--white);">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 80px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;" data-reveal>
+                    <img src="https://images.unsplash.com/photo-1591228127791-8e2eaef098d3?auto=format&fit=crop&q=80&w=800&v=yoga2" alt="Nuestro Estudio" style="width: 100%; border-radius: 5px;">
+                </div>
+                <div style="flex: 1; min-width: 300px;" data-reveal style="transition-delay: 0.4s;">
+                    <h2 style="font-size: 3rem; margin-bottom: 30px; color: var(--primary);">Un espacio para ti</h2>
+                    <p style="margin-bottom: 25px;">Nuestro estudio ha sido diseñado bajo los principios de la arquitectura zen, utilizando materiales naturales y luz indirecta para crear un ambiente que invita a la introspección.</p>
+                    <p>Contamos con todos los elementos necesarios (mats, bloques, bolsters) para que tu única preocupación sea estar presente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 100px 0 50px; text-align: center; border-top: 1px solid #eee;">
+        <div class="container">
+            <a href="#" class="logo" style="margin-bottom: 30px; display: block;">SANTOSHA</a>
+            <p style="color: var(--accent); margin-bottom: 40px;">Namasté.</p>
+            <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px;">
+                <a href="#" style="color: var(--primary); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: var(--primary); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; color: #aaa;">&copy; 2024 Santosha Yoga Studio. | Diseño con calma por Rubén Camargo</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <div class="whatsapp-float">
+        <div class="wa-container">
+            <a href="https://wa.me/yournumber" class="wa-button" target="_blank">
+                <i class="fas fa-seedling wa-loto"></i>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
