@@ -115,16 +115,124 @@
             margin: 0;
         }
 
-        /* Mejora de rendimiento y CLS */
+        /* ── Navbar Premium ── */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1100;
-            padding-top: 0px;
-            padding-bottom: 0px;
+            background: #ffffff;
+            padding: 0;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--primary), var(--secondary)) 1;
+            box-shadow: 0 2px 20px rgba(13, 110, 253, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(13, 110, 253, 0.15);
+        }
+
+        .navbar .container {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        /* Links de navegación */
+        .navbar-nav .nav-link {
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #374151 !important;
+            padding: 1.55rem 1rem;
+            position: relative;
+            transition: color 0.25s ease;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px 3px 0 0;
+            transition: width 0.28s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 70%;
+        }
+
+        /* Botón Ver CV */
+        .navbar-nav .nav-link.btn-nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff !important;
+            border-radius: 6px;
+            padding: 0.5rem 1.25rem;
+            margin-left: 0.75rem;
+            align-self: center;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            box-shadow: 0 3px 10px rgba(13, 110, 253, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .navbar-nav .nav-link.btn-nav-cta::after {
+            display: none;
+        }
+
+        .navbar-nav .nav-link.btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(13, 110, 253, 0.45);
+            color: #ffffff !important;
+        }
+
+        /* Separador visual entre links */
+        .navbar-nav .nav-item:not(:last-child) .nav-link:not(.btn-nav-cta) {
+            border-right: none;
+        }
+
+        /* Collapse en mobile */
+        .navbar-collapse {
+            background: #ffffff;
+        }
+
+        .navbar-toggler {
+            border: 1.5px solid var(--primary);
+            border-radius: 6px;
+            padding: 0.4rem 0.6rem;
+            margin: 0.5rem 0;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(29%) sepia(96%) saturate(1400%) hue-rotate(210deg) brightness(95%) contrast(95%);
+        }
+
+        @media (max-width: 991px) {
+            .navbar-nav .nav-link {
+                padding: 0.75rem 1.25rem;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+
+            .navbar-nav .nav-link.btn-nav-cta {
+                margin: 0.75rem 1.25rem;
+                text-align: center;
+            }
         }
 
         .hero-section {
@@ -134,29 +242,6 @@
             color: white;
             padding: 6.5rem 0 4rem;
             text-align: center;
-        }
-
-        .navbar-nav .nav-link {
-            padding: 0.5rem 1rem;
-        }
-
-        .navbar-collapse {
-            background: #fff;
-            text-align: center;
-        }
-
-        .navbar-toggler {
-            border-color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .navbar-nav .nav-link {
-                font-size: 1rem;
-            }
         }
 
         .logo-img {
@@ -873,7 +958,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-stretch">
                     <li class="nav-item">
                         <a class="nav-link" href="#services">Servicios</a>
                     </li>
@@ -895,9 +980,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white ms-2" href="cv.html">Ver CV</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -1574,8 +1657,13 @@
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
-                    <p class="mt-2"><a href="politica_privacidad.html" class="text-white opacity-75"
-                            style="font-size: 0.8rem; text-decoration: none;">Política de Privacidad</a></p>
+                    <p class="mt-2">
+                        <a href="politica_privacidad.html" class="text-white opacity-75"
+                            style="font-size: 0.8rem; text-decoration: none;">Política de Privacidad</a>
+                        <span class="text-white opacity-25" style="font-size: 0.7rem;"> &middot; </span>
+                        <a href="cv.html" class="text-white opacity-25"
+                            style="font-size: 0.7rem; text-decoration: none;">CV</a>
+                    </p>
                     <p class="mb-0">© 2025 Sistemas Camargo. Todos los derechos reservados.</p>
                 </div>
             </div>
@@ -1622,6 +1710,15 @@
                 duration: 800,
                 once: true,
                 offset: 100
+            });
+
+            // Sombra progresiva al hacer scroll en el navbar
+            $(window).on('scroll', function () {
+                if ($(this).scrollTop() > 30) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
             });
 
             // Protección de Email
