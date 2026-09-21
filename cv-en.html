@@ -634,6 +634,10 @@
             function generatePDF() {
                 // Element to convert to PDF
                 const element = document.body;
+
+                // Hide elements that should not appear in the PDF
+                const langSwitch = document.querySelector('.lang-switch');
+                if (langSwitch) langSwitch.style.display = 'none';
                 
                 // PDF options
                 const options = {
@@ -665,6 +669,7 @@
                 
                 // Generate the PDF
                 html2pdf().set(options).from(element).save().then(() => {
+                    if (langSwitch) langSwitch.style.display = '';
                     document.getElementById('notificationText').innerHTML = '<i class="fas fa-check-circle me-2"></i>PDF generated successfully';
                     document.getElementById('pdfNotification').classList.remove('alert-info', 'alert-danger');
                     document.getElementById('pdfNotification').classList.add('alert-success');
@@ -674,6 +679,7 @@
                         document.getElementById('pdfNotification').style.display = 'none';
                     }, 3000);
                 }).catch(error => {
+                    if (langSwitch) langSwitch.style.display = '';
                     console.error('Error generating PDF:', error);
                     document.getElementById('notificationText').innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Error generating PDF';
                     document.getElementById('pdfNotification').classList.remove('alert-info', 'alert-success');
